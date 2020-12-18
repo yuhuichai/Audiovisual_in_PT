@@ -19,12 +19,12 @@ SphereRadiusRatio = tan(sphereRadiusDeg)*screenDistance*2 / screenYcm;
 %---------------
 
 % Length of the beep
-stimSecs = 3.3*1; % 3.3*10 set TR = 3.3
+stimSecs = 3.3*10; % 3.3*10 set TR = 3.3
 
 % Length of the pause between beeps
-restSecs = 3.3*1; % 3.3*8
+restSecs = 3.3*8; % 3.3*8
 
-trialNum = 1; %
+trialNum = 10; %
 
 %---------------
 % task type setup
