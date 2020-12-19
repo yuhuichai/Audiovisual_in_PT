@@ -11,10 +11,20 @@ This script read the all functional and anatomical runs, and replace the input i
 (4) Script used to censor time points whenever the Euclidean norm of the motion derivatives exceeded 0.4 mm or when at least 10% of image voxels were seen as outliers from the trend: https://github.com/yuhuichai/Audiovisual_in_PT/blob/main/motion_censor.sh
 It reads the motion parameters estimated by SPM12 in step 3, and runs AFNI programs as in bash shell. The run time is around 10 mins.
 
-(5) 
+(5) Script used to generate VAPER time series (sub_d_bold1/2/3.nii) and antomical image (mean.sub_d_dant.masked.denoised.nii): https://github.com/yuhuichai/Audiovisual_in_PT/blob/main/vaper.sh
+It reads all runs motion corrected by SPM12 and then do subtraction and ratio computation between CTRL and DANTE or MT time series. For anatomical runs, we compute the mean antomical image and denoise it using ANTs (https://github.com/ANTsX/ANTs) program DenoiseImage. This script is writen in bash shell and depends on AFNI programs. The run time is around 10 mins.
 
-colomnProfile.sh/m extracts columnar profile, layerProfile extracts laminar profile
+(6) Script used to do regression analysis and generate voxelwise beta weights / percent signal changes for each stimulation condition: https://github.com/yuhuichai/Audiovisual_in_PT/blob/main/afni_3ddeconvolve.sh
+This script is writen in bash shell and depends on AFNI programs. The run time is about 10 mins.
 
-layerSmooth.sh generates cortical layers and does laminar smoothing
+(7) Script used to compute cortical layers and do layer-specific smoothing: https://github.com/yuhuichai/Audiovisual_in_PT/blob/main/layerSmooth_mc.sh
+It reads the layerMask file, which covers the PT area and are draw in fsleyes (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes). It grows cortical layers and do layer-specific smoothing using LAYNII programs (https://github.com/layerfMRI/LAYNII). The script is writen in bash shell and depends on AFNI programs. The run time can be up to ten hours.
 
-correctRate.m computes the response time and detection accuracy of vigilance task
+(8) Script used to compute cortical columns and extract signal changes across columns: https://github.com/yuhuichai/Audiovisual_in_PT/blob/main/columnProfile.sh
+It reads the cortical layer nifti generated in step 7 and the landmark mannually draw to indicate the starting and ending boundaries in fsleyes. Tutorials to draw landmark and compute cortical columns is available in https://layerfmri.com/2018/09/26/columns/ This script depends on AFNI programs and outputs coritcal columns and the text files of columnar signal changes.
+
+(9) Script used to extract signal changes across cortical layers: https://github.com/yuhuichai/Audiovisual_in_PT/blob/main/layerProfile_lay.sh
+It reads the ROI of auditory T2, anterior and posterior PT, and output the laminar-specific signal changes in these ROIs. This script depends on AFNI program.
+
+(10) Script used to perform behavior data analysis: https://github.com/yuhuichai/Audiovisual_in_PT/blob/main/correctRate.m
+It reads the behavior data from each session of each subject, computes the accuracy rate and response time, then compare across different conditions using anova1 with multicomparison correction. This script runs in MATLAB.
