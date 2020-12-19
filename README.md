@@ -18,7 +18,7 @@ It reads all runs motion corrected by SPM12 and then do subtraction and ratio co
 This script is writen in bash shell and depends on AFNI programs. The run time is about 10 mins.
 
 (7) Script used to compute cortical layers and do layer-specific smoothing: https://github.com/yuhuichai/Audiovisual_in_PT/blob/main/layerSmooth_mc.sh
-It reads the layerMask file, which covers the PT area and are draw in fsleyes (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes). It grows cortical layers and do layer-specific smoothing using LAYNII programs (https://github.com/layerfMRI/LAYNII). The script is writen in bash shell and depends on AFNI programs. The run time can be up to ten hours.
+It reads the layerMask file, which covers the PT area and are draw in fsleyes (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes). It grows cortical layers and do layer-specific smoothing using LAYNII programs (https://github.com/layerfMRI/LAYNII). The script is writen in bash shell and depends on AFNI programs. The run time can be up to one hour.
 
 (8) Script used to compute cortical columns and extract signal changes across columns: https://github.com/yuhuichai/Audiovisual_in_PT/blob/main/columnProfile.sh
 It reads the cortical layer nifti generated in step 7 and the landmark mannually draw to indicate the starting and ending boundaries in fsleyes. Tutorials to draw landmark and compute cortical columns is available in https://layerfmri.com/2018/09/26/columns/ This script depends on AFNI programs and outputs coritcal columns and the text files of columnar signal changes.
